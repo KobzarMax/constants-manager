@@ -6,27 +6,21 @@ import { Spinner } from "../components/Spinner";
 import DashboardPage from "@/Pages/Dashboard";
 
 export const routes = createBrowserRouter([
-    {
-        element: <Layout />,
-        children: [
-            {
-                path: "/",
-                element: (
-                    <Suspense fallback={<Spinner />}>
-                      <LoginPage />
-                    </Suspense>
-                  )
-      
-            },
-            {
-                path: "dashboard",
-                element: (
-                    <Suspense fallback={<Spinner />}>
-                        <DashboardPage />
-                    </Suspense>
-                )
-              },
-        
-        ]
-    }
-])
+  {
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <LoginPage />,
+      },
+      {
+        path: "dashboard",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <DashboardPage />
+          </Suspense>
+        ),
+      },
+    ],
+  },
+]);
