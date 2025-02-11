@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+* {
+  transition: 0.3s all;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f7f8f8;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #99dcff;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #00a6fb;
+}
