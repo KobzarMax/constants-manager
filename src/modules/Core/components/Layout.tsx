@@ -41,7 +41,6 @@ export const Layout: FC = () => {
           setLoading(false);
         }
       } else if (location.pathname !== "/") {
-        localStorage.removeItem("authToken");
         navigate("/");
       }
     };
