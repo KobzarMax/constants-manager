@@ -42,23 +42,23 @@ export const CitiesForDelivery: FC = () => {
         {data.map((city: CityForDelivery) => (
           <div
             key={city.id}
-            className="flex group relative items-start justify-between flex-col bg-white/50 p-2 rounded-md shadow-md"
+            className="flex group items-start justify-between flex-col bg-white/50 p-2 rounded-md shadow-md"
           >
+            <button
+              onClick={() => {
+                setEditableCity(city);
+                setIsModalOpen(!isModalOpen);
+              }}
+              className="mr-0 ml-auto size-4 cursor-pointer shadow-2xs"
+            >
+              <img src={edit} alt="edit" />
+            </button>
             <div className="text-lg font-semibold">
               {city.city} - {city.cost}
             </div>
             <div className="text-xs font-normal">
               Last update: {formatTimestamp(city.updated_at)}
             </div>
-            <button
-              onClick={() => {
-                setEditableCity(city);
-                setIsModalOpen(!isModalOpen);
-              }}
-              className="group-hover:block hidden absolute top-2 right-2 size-4 cursor-pointer shadow-2xs"
-            >
-              <img src={edit} alt="edit" />
-            </button>
           </div>
         ))}
       </div>

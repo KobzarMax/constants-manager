@@ -22,8 +22,17 @@ export const IAAIcitiesAndPortsDataItem: FC<
 }) => {
   return (
     <div
-      className={`flex group relative items-start justify-between flex-col ${IAAIcitiesAndPortsItem.id === editing?.id ? "bg-blue-300/50" : "bg-white/50"} p-2 rounded-md shadow-md`}
+      className={`flex items-start justify-between flex-col ${IAAIcitiesAndPortsItem.id === editing?.id ? "bg-blue-300/50" : "bg-white/50"} p-2 rounded-md shadow-md`}
     >
+      <button
+        onClick={() => {
+          setEditing(IAAIcitiesAndPortsItem);
+          setIsModalOpen(!isModalOpen);
+        }}
+        className="mr-0 ml-auto size-4 cursor-pointer shadow-2xs"
+      >
+        <img src={edit} alt="edit" />
+      </button>
       <div className="text-lg font-semibold">{IAAIcitiesAndPortsItem.City}</div>
       <div className="text-base font-normal">
         SAVANNAH: {IAAIcitiesAndPortsItem.SAVANNAH}
@@ -40,15 +49,6 @@ export const IAAIcitiesAndPortsDataItem: FC<
       <div className="text-xs font-normal">
         Last update: {formatTimestamp(IAAIcitiesAndPortsItem.updated_at)}
       </div>
-      <button
-        onClick={() => {
-          setEditing(IAAIcitiesAndPortsItem);
-          setIsModalOpen(!isModalOpen);
-        }}
-        className="group-hover:block hidden absolute top-2 right-2 size-4 cursor-pointer shadow-2xs"
-      >
-        <img src={edit} alt="edit" />
-      </button>
     </div>
   );
 };

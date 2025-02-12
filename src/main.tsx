@@ -7,8 +7,6 @@ import { routes } from './modules/Core/routes/router-list.tsx';
 
 const queryClient = new QueryClient();
 
-console.log("ahahha")
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>

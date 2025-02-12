@@ -22,8 +22,17 @@ export const CopartCitiesAndPortsDataItem: FC<
 }) => {
   return (
     <div
-      className={`flex group relative items-start justify-between flex-col ${copartCitiesAndPortsItem.id === editing?.id ? "bg-blue-300/50" : "bg-white/50"} p-2 rounded-md shadow-md`}
+      className={`flex group items-start justify-between flex-col ${copartCitiesAndPortsItem.id === editing?.id ? "bg-blue-300/50" : "bg-white/50"} p-2 rounded-md shadow-md`}
     >
+      <button
+        onClick={() => {
+          setEditing(copartCitiesAndPortsItem);
+          setIsModalOpen(!isModalOpen);
+        }}
+        className="mr-0 ml-auto size-4 cursor-pointer shadow-2xs"
+      >
+        <img src={edit} alt="edit" />
+      </button>
       <div className="text-lg font-semibold">
         {copartCitiesAndPortsItem.City}
       </div>
@@ -42,15 +51,6 @@ export const CopartCitiesAndPortsDataItem: FC<
       <div className="text-xs font-normal">
         Last update: {formatTimestamp(copartCitiesAndPortsItem.updated_at)}
       </div>
-      <button
-        onClick={() => {
-          setEditing(copartCitiesAndPortsItem);
-          setIsModalOpen(!isModalOpen);
-        }}
-        className="group-hover:block hidden absolute top-2 right-2 size-4 cursor-pointer shadow-2xs"
-      >
-        <img src={edit} alt="edit" />
-      </button>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { FormRender } from "@/Core/components/FormRender";
 
 const DashboardPage: FC = () => {
   return (
-    <div className="min-h-dvh grid grid-cols-[320px_1fr]">
+    <div className="min-h-dvh grid grid-cols-[auto_1fr] lg:grid-cols-[320px_1fr]">
       <Sidebar />
       <FormRender />
     </div>

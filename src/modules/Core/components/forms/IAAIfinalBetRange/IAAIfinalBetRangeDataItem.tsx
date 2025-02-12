@@ -20,8 +20,17 @@ export const IAAIfinalBetRangeDataItem: FC<IAAIfinalBetRangeDataItemProps> = ({
 }) => {
   return (
     <div
-      className={`flex group relative items-start justify-between flex-col ${IAAIfinalBetRangeItem.id === editing?.id ? "bg-blue-300/50" : "bg-white/50"} p-2 rounded-md shadow-md`}
+      className={`flex items-start justify-between flex-col ${IAAIfinalBetRangeItem.id === editing?.id ? "bg-blue-300/50" : "bg-white/50"} p-2 rounded-md shadow-md`}
     >
+      <button
+        onClick={() => {
+          setEditing(IAAIfinalBetRangeItem);
+          setIsModalOpen(!isModalOpen);
+        }}
+        className="mr-0 ml-auto size-4 cursor-pointer shadow-2xs"
+      >
+        <img src={edit} alt="edit" />
+      </button>
       <div className="text-lg font-semibold">
         {IAAIfinalBetRangeItem.min} - {IAAIfinalBetRangeItem.max}
       </div>
@@ -33,15 +42,6 @@ export const IAAIfinalBetRangeDataItem: FC<IAAIfinalBetRangeDataItemProps> = ({
       <div className="text-xs font-normal">
         Last update: {formatTimestamp(IAAIfinalBetRangeItem.updated_at)}
       </div>
-      <button
-        onClick={() => {
-          setEditing(IAAIfinalBetRangeItem);
-          setIsModalOpen(!isModalOpen);
-        }}
-        className="group-hover:block hidden absolute top-2 right-2 size-4 cursor-pointer shadow-2xs"
-      >
-        <img src={edit} alt="edit" />
-      </button>
     </div>
   );
 };
