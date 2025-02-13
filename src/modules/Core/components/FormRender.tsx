@@ -13,7 +13,7 @@ import { CopardBetsInRealTimeData } from "./forms/CopardBetsInRealTime/CopardBet
 import { IAAIbetsInRealTimeData } from "./forms/IAAIbetsInRealTime/IAAIbetsInRealTimeData";
 import { IAAIcitiesAndPortsData } from "./forms/IAAIcitiesAndPorts/IAAIcitiesAndPortsData";
 import { CopartCitiesAndPortsData } from "./forms/CopartCitiesAndPorts/CopartCitiesAndPortsData";
-import { InsuranceConstForm } from "./forms/insuranceConst/insuranceConstForm";
+import { InsuranceConstForm } from "./forms/insuranceConst/InsuranceConstForm";
 
 export const FormRender: FC = () => {
   const form = useFormStore((state) => state.activeForm);
