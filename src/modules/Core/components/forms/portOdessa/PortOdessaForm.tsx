@@ -4,6 +4,14 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import supabase from "src/supabase/client";
 import { Spinner } from "../../Spinner";
 import { formatTimestamp } from "src/utils";
+import { z } from "zod";
+
+const portOdesasSchema = z.object({
+  value: z
+    .number()
+    .min(0.01, "Value must be greater than 0")
+    .max(1000000, "Value is too high"),
+});
 
 export const PortOdessaForm: FC = () => {
   const {
@@ -42,6 +50,9 @@ export const PortOdessaForm: FC = () => {
   const form = useForm({
     defaultValues: { value: portOdessaData?.value ?? 0 },
     onSubmit: ({ value }) => mutation.mutate(value.value),
+    validators: {
+      onChange: portOdesasSchema,
+    },
   });
 
   if (isLoading) return <Spinner />;

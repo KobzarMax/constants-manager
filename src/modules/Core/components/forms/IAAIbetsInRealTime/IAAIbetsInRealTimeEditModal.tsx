@@ -15,7 +15,7 @@ export type IAAIbetsInRealTimeModalProps = {
 const IAAIbetsInRealTimeSchema = z.object({
   min: z.number().min(0, { message: "Min is required" }),
   max: z.number().min(0.01, { message: "Max is required" }),
-  bet: z.number().min(0.01, { message: "Bet is required" }),
+  bet: z.number().min(0, { message: "Bet is required" }),
 });
 
 export const IAAIbetsInRealTimeEditModal: FC<IAAIbetsInRealTimeModalProps> = ({
@@ -71,7 +71,11 @@ export const IAAIbetsInRealTimeEditModal: FC<IAAIbetsInRealTimeModalProps> = ({
   });
 
   return (
-    <Modal modalSize="w-1/3" onClose={() => onClose()} needScroll={false}>
+    <Modal
+      modalSize="w-[90%] lg:w-1/3"
+      onClose={() => onClose()}
+      needScroll={false}
+    >
       <form
         onSubmit={(e) => {
           e.preventDefault();

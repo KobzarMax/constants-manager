@@ -20,7 +20,7 @@ export const Modal = ({
     <div className="absolute top-0 left-0 right-0 bottom-0 w-screen h-screen overlay flex items-center z-50 justify-center">
       <div
         ref={modalRef}
-        className={`w-[90%] lg:${modalSize} rounded-2xl max-h-[90%] min-[1940px]:h-fit ${
+        className={`${modalSize} rounded-2xl max-h-[90%] min-[1940px]:h-fit ${
           needScroll && "h-full"
         } rounded-base p-4 bg-white`}
       >

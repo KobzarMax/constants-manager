@@ -53,7 +53,11 @@ export const CityDeliveryModal: FC<CityForDeliveryModalProps> = ({
   });
 
   return (
-    <Modal modalSize="w-1/4" onClose={() => onClose()} needScroll={false}>
+    <Modal
+      modalSize="w-[90%] lg:w-1/4"
+      onClose={() => onClose()}
+      needScroll={false}
+    >
       <form
         onSubmit={(e) => {
           e.preventDefault();

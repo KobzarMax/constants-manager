@@ -13,6 +13,7 @@ import { CopardBetsInRealTimeData } from "./forms/CopardBetsInRealTime/CopardBet
 import { IAAIbetsInRealTimeData } from "./forms/IAAIbetsInRealTime/IAAIbetsInRealTimeData";
 import { IAAIcitiesAndPortsData } from "./forms/IAAIcitiesAndPorts/IAAIcitiesAndPortsData";
 import { CopartCitiesAndPortsData } from "./forms/CopartCitiesAndPorts/CopartCitiesAndPortsData";
+import { InsuranceConstForm } from "./forms/insuranceConst/insuranceConstForm";
 
 export const FormRender: FC = () => {
   const form = useFormStore((state) => state.activeForm);
@@ -43,6 +44,8 @@ export const FormRender: FC = () => {
         return <IAAIcitiesAndPortsData />;
       case CONSTANTS.COPART_CITIES_AND_PORTS:
         return <CopartCitiesAndPortsData />;
+      case CONSTANTS.INSURANCE_CONST:
+        return <InsuranceConstForm />;
       default:
         return null;
     }

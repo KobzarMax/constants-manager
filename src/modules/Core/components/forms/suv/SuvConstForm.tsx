@@ -4,6 +4,14 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import supabase from "src/supabase/client";
 import { Spinner } from "../../Spinner";
 import { formatTimestamp } from "src/utils";
+import { z } from "zod";
+
+const suvConstSchema = z.object({
+  value: z
+    .number()
+    .min(0.01, "Value must be greater than 0")
+    .max(1000000, "Value is too high"),
+});
 
 export const SuvConstForm: FC = () => {
   const authToken = localStorage.getItem("authToken");
@@ -43,6 +51,9 @@ export const SuvConstForm: FC = () => {
   const form = useForm({
     defaultValues: { value: suvData?.value ?? 0 },
     onSubmit: ({ value }) => mutation.mutate(value.value),
+    validators: {
+      onChange: suvConstSchema,
+    },
   });
 
   if (isLoading) return <Spinner />;

@@ -6,23 +6,23 @@ import { Spinner } from "../../Spinner";
 import { formatTimestamp } from "src/utils";
 import { z } from "zod";
 
-const copartConstantSchema = z.object({
+const insuranceSchema = z.object({
   value: z
     .number()
     .min(0.01, "Value must be greater than 0")
     .max(1000000, "Value is too high"),
 });
 
-export const CopartConstantForm: FC = () => {
+export const InsuranceConstForm: FC = () => {
   const {
-    data: copartConstantData,
+    data: insuranceConstData,
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["copartConstant"],
+    queryKey: ["insuranceConst"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from("copartConstant")
+        .from("insuranceConst")
         .select("*")
         .single();
       if (error) throw error;
@@ -33,12 +33,12 @@ export const CopartConstantForm: FC = () => {
 
   const mutation = useMutation({
     mutationFn: async (newValue: number) => {
-      if (!copartConstantData?.id)
+      if (!insuranceConstData?.id)
         throw new Error("No portOdessaData record found");
       const { error } = await supabase
-        .from("copartConstant")
+        .from("insuranceConst")
         .update({ value: newValue, updated_at: new Date().toISOString() })
-        .eq("id", copartConstantData.id);
+        .eq("id", insuranceConstData.id);
       if (error) throw error;
       return newValue;
     },
@@ -48,10 +48,10 @@ export const CopartConstantForm: FC = () => {
   });
 
   const form = useForm({
-    defaultValues: { value: copartConstantData?.value ?? 0 },
+    defaultValues: { value: insuranceConstData?.value ?? 0 },
     onSubmit: ({ value }) => mutation.mutate(value.value),
     validators: {
-      onChange: copartConstantSchema,
+      onChange: insuranceSchema,
     },
   });
 
@@ -67,9 +67,9 @@ export const CopartConstantForm: FC = () => {
       >
         <div className="mb-4">
           <label htmlFor="value" className="block font-semibold text-lg mb-1">
-            Copart Constant |{" "}
+            Insurance Constant |{" "}
             <span className="text-xs font-normal">
-              Last update: {formatTimestamp(copartConstantData?.updated_at)}
+              Last update: {formatTimestamp(insuranceConstData?.updated_at)}
             </span>
           </label>
           <form.Field name="value">
@@ -78,6 +78,7 @@ export const CopartConstantForm: FC = () => {
                 <input
                   type="number"
                   id="number"
+                  step={0.01}
                   disabled={mutation.isPending}
                   className="p-2 border rounded-2xl outline-none focus:outline-none focus:ring-2 focus:ring-blue-200 border-blue-100 bg-blue-200/30"
                   value={field.state.value}

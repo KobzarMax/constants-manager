@@ -11,4 +11,5 @@ export enum CONSTANTS {
   IAAI_BETS_IN_REAL_TIME = "IAAIBetsInRealTime",
   COPART_CITIES_AND_PORTS = "CopartCitiesAndPorts",
   IAAI_CITIES_AND_PORTS = "IAAICitiesAndPorts",
+  INSURANCE_CONST = "insuranceConst",
 }

@@ -78,7 +78,11 @@ export const IAAIfinalBetRangeEditModal: FC<IAAIfinalBetRangeModalProps> = ({
   });
 
   return (
-    <Modal modalSize="w-1/3" onClose={() => onClose()} needScroll={false}>
+    <Modal
+      modalSize="w-[90%] lg:w-1/3"
+      onClose={() => onClose()}
+      needScroll={false}
+    >
       <form
         onSubmit={(e) => {
           e.preventDefault();
